@@ -1,2 +1,2 @@
-# finetuning_llama3.1
-Training Llama-3.1-8B with Financial Dataset
+# Finetuning Llama3.1 using LoRA
+In this notebook, we will finetune Llama-3.1-8B with [Alpaca Financial Dataset](https://huggingface.co/datasets/poornima9348/finance-alpaca-1k-test).
