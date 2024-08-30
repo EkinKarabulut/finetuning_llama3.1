@@ -9,9 +9,6 @@ from peft import prepare_model_for_kbit_training, LoraConfig, TaskType, get_peft
 import numpy as np
 from transformers import DataCollatorWithPadding, DataCollatorForLanguageModeling
 
-# Ensure required packages are installed
-# %pip install torch torchvision transformers datasets bitsandbytes peft
-
 def configure_device():
     """Configure and return the device (GPU if available)."""
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -99,7 +96,6 @@ def train_model(lora_model, train_dataset, test_dataset, tokenizer, local_rank):
         save_strategy="epoch",
         num_train_epochs=1,
         weight_decay=0.01,
-        #load_best_model_at_end=True,
         logging_steps=1,
         report_to="none",
         remove_unused_columns=False, 
@@ -140,8 +136,6 @@ if __name__ == "__main__":
     model, tokenizer = load_model(model_name)
 
     # Load and prepare data
-    #train_dataset, test_dataset = load_and_prepare_data(tokenizer)
-    # Load and prepare data
     train_dataloader, test_dataloader = load_and_prepare_data(tokenizer, initialization)
 
     # Prepare the LoRA model
@@ -150,7 +144,7 @@ if __name__ == "__main__":
     # Train the model
     trainer = train_model(lora_model, train_dataloader, test_dataloader, tokenizer, initialization)
 
-    # Generate a response with the trained model
+    # Optional: Generate a response with the trained model
     #generate_response(model=model, trained_model_path="Meta-Llama-3.1-8B-Instruct-finetuned/checkpoint-400", tokenizer=tokenizer)
 
     # Clean up distributed training
