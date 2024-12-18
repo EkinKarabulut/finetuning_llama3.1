@@ -24,11 +24,11 @@ def initialize_distributed():
     print(f"Initialized distributed training on local rank: {local_rank}")
     return local_rank
 
-def load_model(model_name: str):
+def load_model(model_repo: str):
     """Load and return the model and tokenizer from HuggingFace."""
     print("Starting to load the model")
-    model = AutoModelForCausalLM.from_pretrained(model_name, device_map="auto", load_in_8bit=True)
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForCausalLM.from_pretrained(model_repo, device_map="auto", load_in_8bit=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_repo)
     tokenizer.pad_token = tokenizer.eos_token
     return model, tokenizer
 
@@ -132,8 +132,8 @@ if __name__ == "__main__":
     initialization = initialize_distributed()
 
     # Load model and tokenizer
-    model_name = "NousResearch/Meta-Llama-3.1-8B-Instruct"
-    model, tokenizer = load_model(model_name)
+    model_repo = "/model/Meta-Llama-3.1-8B-Instruct"
+    model, tokenizer = load_model(model_repo)
 
     # Load and prepare data
     train_dataloader, test_dataloader = load_and_prepare_data(tokenizer, initialization)
