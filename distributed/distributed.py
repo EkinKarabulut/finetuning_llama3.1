@@ -88,7 +88,7 @@ def train_model(lora_model, train_dataset, test_dataset, tokenizer, local_rank):
     lora_model = DDP(lora_model.to(local_rank), device_ids=[local_rank])
     print("LoRA model is set up, starting the training now...")
     training_args = TrainingArguments(
-        output_dir="Meta-Llama-3.1-8B-Instruct-finetuned",
+        output_dir="/model/checkpoints",
         learning_rate=2e-5,
         per_device_train_batch_size=1,
         per_device_eval_batch_size=1,
@@ -145,7 +145,7 @@ if __name__ == "__main__":
     trainer = train_model(lora_model, train_dataloader, test_dataloader, tokenizer, initialization)
 
     # Optional: Generate a response with the trained model
-    #generate_response(model=model, trained_model_path="Meta-Llama-3.1-8B-Instruct-finetuned/checkpoint-400", tokenizer=tokenizer)
+    #generate_response(model=model, trained_model_path="/model/checkpoints/checkpoint-400", tokenizer=tokenizer)
 
     # Clean up distributed training
     dist.destroy_process_group()
