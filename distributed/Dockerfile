@@ -8,9 +8,6 @@ WORKDIR /demo
 # Copy the current directory contents into the container at /demo
 COPY distributed.py launch.sh /demo/
 
-# Create the checkpoint directory
-RUN mkdir -p /model/checkpoints && chmod -R 777 /model/checkpoints
-
 # Run the bash file
 RUN chmod u+x launch.sh
 CMD ["./launch.sh"]
