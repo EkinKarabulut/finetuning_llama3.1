@@ -1,6 +1,11 @@
 FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
 
-RUN pip install torch torchvision transformers datasets bitsandbytes peft
+RUN pip install \
+      transformers==4.44.2 \
+      peft==0.12.0 \
+      accelerate==0.33.0 \
+      bitsandbytes==0.43.3 \
+      datasets==2.21.0
 
 # Set the working directory 
 WORKDIR /demo
