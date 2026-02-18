@@ -1,0 +1,65 @@
+# Model checkpoints and adapter weights
+checkpoints/
+checkpoint-*/
+outputs/
+runs/
+adapter_model/
+adapter_model.bin
+adapter_config.json
+saved_model/
+fine_tuned_model/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+
+# Hugging Face cache
+.cache/
+~/.cache/huggingface/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# Environment variables
+.env
+*.env
+
+# Dataset cache
+data/
+datasets/
+*.arrow
+*.parquet
+
+# Logs
+logs/
+*.log
+wandb/
+mlruns/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
